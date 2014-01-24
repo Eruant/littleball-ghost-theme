@@ -1,49 +1,57 @@
 <!DOCTYPE html>
-<html>
+<!--[if lte IE 8]><html class="no-js lte-ie8"><![endif]-->
+<!--[if gt IE 9]><!--><html class="no-js"><!--<![endif]-->
 <head>
-
-  <meta charset="UTF-8">
-  <title>{{meta_title}}</title>
-  <meta name="viewport" content="width=device-width">
-
-  <!--[if lt IE 9]>
-    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
-
-  <link href="/assets/css/style.css" rel="stylesheet" />
-  <link href="/assets/css/colors-dark.css" rel="stylesheet" />
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="{{meta_description}}" />
   {{ghost_head}}
 
+  <title>{{meta_title}}</title>
+
+  <link rel="shortcut icon" href="{{@blog.favicon}}" />
+  <link href="/assets/css/style.css" rel="stylesheet" />
+  <!--[if lte IE 8]>
+    <link href="/assets/css/ie.css" rel="stylesheet" />
+  <![endif]-->
+
+  <!--[if lte IE 8]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
 </head>
 
 <body class="{{body_class}}">
-
+  <noscript>
+    <div class="no-script">
+      <p>For full functionality of theis site it is necessary to enable JavaScript.</p>
+      <p>Here are the <a href="http://www.enable-javascript.com/" target="_blank"> instructions how to enable JavaScript in your web browser</a>.</p>
+    </div>
+  </noscript>
+  <!--[if lt IE 8]>
+    <div class="no-browser">
+      <p>Sorry, we don't look so hot in this browser. If you want to see us at our very best then how about upgrading? We're worth it…</p>
+      <p>Here are the instructions <a href="http://whatbrowser.org/" target="_blank" data-track="header|click|browser">how to upgrade your web browser</a>.</p>
+      <p>If you're using Internet Explorer, 'compatibility mode' can also affect the way this site looks.</p>
+      <p>Please follow these instructions <a href="http://windows.microsoft.com/en-GB/internet-explorer/products/ie-9/features/compatibility-view" target="_blank" data-track="header|click|compatibility">how to switch compatibility mode off</a>.</p>
+    </div>
+  <![endif]-->
 
 
   {{#if @blog.cover}}
     <div id="coverimg" style="background-image: url({{@blog.cover}})"></div>
   {{/if}}
 
-
-
-  <header id="header">
+  <header class="header">
     {{#if @blog.logo}}
       <a id="blog-logo" href="/"><img src="{{@blog.logo}}" /></a>
     {{else}}
-      <h1><a href="/"><i class="icon-sun"></i> {{@blog.title}}</a></h1>
+      <h1><a href="/">{{@blog.title}}</a></h1>
     {{/if}}
     <p>{{@blog.description}}</p>
   </header>
 
-
-
-  <div id="page">
-
-
-
-    <div id="sidebar">
-
+  <main class="main">
+    <div class="sidebar">
       <nav>
         <ul>
           <li><a href="/">Home</a></li>
@@ -55,43 +63,22 @@
       {{#post}}
       {{#if author}}
         <div class="bio">
-          <img class="avatar" src="{{author.image}}" />
           <h3>{{author.name}}</h3>
           <p>{{author.bio}}</p>
         </div>
       {{/if}}
       {{/post}}
-
     </div>
-
-
 
     <div id="content">
       {{{body}}}
     </div>
+  </main>
 
-
-
-  </div>
-
-
-
-  <footer id="footer">
+  <footer class="footer">
     <p class="copyright">&copy; 2014 {{@blog.title}}</p>
   </footer>
 
-
-
   {{ghost_foot}}
-
-  <script src="/assets/js/jquery.mobilemenu.min.js"></script>
-  <script>
-    $(document).ready(function(){
-      $('#sidebar nav ul').mobileMenu({'topOptionText': 'Menu', 'prependTo': '#sidebar nav'});
-    });
-  </script>
-
-
-
 </body>
 </html>
